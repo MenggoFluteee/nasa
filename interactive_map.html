@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html
+  lang="en"
+  data-layout="fluid"
+  data-sidebar-theme="colored"
+  data-sidebar-position="left"
+  data-sidebar-behavior="sticky"
+  data-bs-theme="light"
+>
+  <meta
+    http-equiv="content-type"
+    content="text/html;charset=UTF-8"
+  /><!-- /Added by HTTrack -->
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Responsive Bootstrap 5 Admin &amp; Dashboard Template"
+    />
+    <meta name="author" content="Bootlab" />
+
+    <title>SafetyPIN</title>
+
+    <link rel="shortcut icon" href="../nasa/appstack-assets/img/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="../nasa/appstack-assets/css/app.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css"
+    />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Q3ZYEKLQ68"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-bg">
+          <img
+            src="../nasa/images/marker.png"
+            alt="cmu logo"
+            class="img-fluid rounded-circle me-1 mt-n2 mb-n2"
+          /><span style="font-size: 24px; color: #be1e2d">Safety Pins</span>
+          <div class="bx bx-menu" id="menu-icon"></div>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <a href="../nasa/index.html" class="nav-link">Home</a>
+            </ul>
+          </div>
+        </nav>
+        <main class="content">
+          <div class="container-fluid p-0">
+            <div class="row">
+              <div class="col-4 text-start">
+                <h1>Interactive Map</h1>
+              </div>
+
+              <div class="col-4">
+                <select name="" id="" class="form-control">
+                  <option selected value="">Select a filter</option>
+                  <option value="Crime">Crime</option>
+                  <option value="Road">Road</option>
+                  <option value="Natural">Natural</option>
+                </select>
+              </div>
+              <div class="col-4 text-end">
+                <button class="btn btn-primary" id="submitReportButton">
+                  <i data-lucide="plus"> </i> Submit an incident report
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div id="map" class="map" style="height: 750px"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="offcanvasRight"
+              aria-labelledby="offcanvasRightLabel"
+              aria-modal="true"
+              role="dialog"
+            >
+              <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <button
+                  type="button"
+                  class="btn-close text-reset"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <div>
+                  Some text as placeholder. In real life you can have the
+                  elements you have chosen. Like, text, images, lists, etc.
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <div
+          class="modal fade"
+          id="submitReportModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="submitReportModal"
+          Label
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Submit and Incident Report</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <form action="" method="POST">
+
+                <div class="modal-body mx-3">
+                  <div class="mb-3">
+                    <label class="form-label">Accident Name</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-lg"
+                      id="formAddProjectTitle"
+                      name="formAddProjectTitle"
+                      placeholder="Enter accident name"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Accident Description</label>
+                    <textarea
+                      name="formAddProjectDescription"
+                      id="formAddProjectDescription"
+                      rows="5"
+                      class="form-control"
+                      placeholder="Enter accident description"
+                    ></textarea>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <label class="form-label">Accident Category</label>
+                      <select
+                        class="form-control form-control-lg mb-3"
+                        id="formAddProjectSourceofFund"
+                        name="formAddProjectSourceofFund"
+                      >
+                        <option selected value="">Select category</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Road">Road</option>
+                        <option value="Natural">Natural</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label">Accident Severity</label>
+                      <select
+                        class="form-control form-control-lg mb-3"
+                        id="formAddProjectModeofImplementation"
+                        name="formAddProjectModeofImplementation"
+                      >
+                        <option selected value="">Select severity</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div
+                      class="formMap"
+                      id="formMap"
+                      style="height: 250px"
+                    ></div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-light" data-bs-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button class="btn btn-success" type="submit">
+                    <i data-lucide="save" class="lucide lucide-save mr-3"></i>
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-6 text-start">
+                CENTRAL MINDANAO UNIVERSITY | Software Development Department
+              </div>
+              <div class="col-6 text-end">
+                <p class="mb-0">
+                  &copy; 2024 - <a class="text-muted" href="cmu.edu.ph">CMU</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      $("#submitReportButton").click(function () {
+        $("#submitReportModal").modal("show");
+      });
+    </script>
+
+    <script src="../nasa/appstack-assets/js/app.js"></script>
+    <script>
+      function initMap() {
+        // The location (example coordinates of Central Mindanao University)
+        const location = {
+          lat: 7.859609020828016,
+          lng: 125.05150349035303,
+        };
+
+        const markers = [
+          {
+            lat: 7.858982476961707,
+            lng: 125.0525194564716,
+            desc: "Sample Marker 1",
+          },
+          {
+            lat: 7.862538594968304,
+            lng: 125.05597600642825,
+            desc: "Sample Marker 2",
+          },
+          {
+            lat: 7.8592439095421955,
+            lng: 125.04524717029442,
+            desc: "Sample Marker 3",
+          },
+          {
+            lat: 7.8635376234447705,
+            lng: 125.04799375234471,
+            desc: "Sample Marker 4",
+          },
+          {
+            lat: 7.851719174994487,
+            lng: 125.05243549050529,
+            desc: "Sample Marker 5",
+          },
+        ];
+
+        // Creating a new map centered on the given location
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: location,
+          tilt: 75,
+          mapTypeId: google.maps.MapTypeId.SATELLITE,
+        });
+
+        const formMap = new google.maps.Map(
+          document.getElementById("formMap"),
+          {
+            zoom: 15,
+            center: location,
+            tilt: 75,
+            mapTypeId: google.maps.MapTypeId.SATELLITE,
+          }
+        );
+
+        // Create a single InfoWindow instance to be reused for each marker
+        const infoWindow = new google.maps.InfoWindow();
+
+        // Adding markers and an event listener for showing the custom InfoWindow
+        markers.forEach(function (markerData) {
+          const marker = new google.maps.Marker({
+            position: {
+              lat: markerData.lat,
+              lng: markerData.lng,
+            },
+            map: map,
+            title: markerData.desc,
+          });
+
+          // Add click listener for the marker to show the custom InfoWindow
+          marker.addListener("click", function () {
+            // Define custom content with a button inside
+            const customContent = `
+                        <div style="text-align: center;">
+                            <h3 class="mb-3">${markerData.desc}</h3>
+                            <button class="btn btn-block btn-success" onclick="handleButtonClick('${markerData.desc}')">More Info</button>
+                        </div>
+                    `;
+
+            infoWindow.setContent(customContent); // Set the custom HTML content
+            infoWindow.open(map, marker); // Open InfoWindow anchored to the marker
+          });
+        });
+      }
+
+      // Function to handle button click event inside the InfoWindow
+      function handleButtonClick(desc) {
+        $("#offcanvasRight").offcanvas("show");
+      }
+    </script>
+
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8rlfEG9wu6xJaKgcNKp-9_Y0BxxX22bs&callback=initMap"
+    ></script>
+  </body>
+</html>
